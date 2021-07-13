@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ObserveInput, PossibleInputKeys } from '../library/observable-inputs';
+import { ObserveInput } from '../library/observable-inputs';
 
 @Component({
   selector: 'app-photo',
