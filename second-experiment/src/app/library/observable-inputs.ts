@@ -7,37 +7,36 @@ type KeysNotOfType<T, TProp> = { [P in keyof T]: T[P] extends TProp? never : P }
 // https://stackoverflow.com/a/58210459/1145963
 type NonFunctionPropertyNames<T> = { [K in keyof T]: T[K] extends Function ? never : K }[keyof T];
 
-export type PossibleInputKeys<T> = KeysNotOfType<T, Observable<any>> & NonFunctionPropertyNames<T>;
+type InputPropertyName<T> = KeysNotOfType<T, Observable<any>> & NonFunctionPropertyNames<T>;
 
 
-function internalValueName(key: string|symbol|any): string {
-  return `_${key.toString()}`
+function internalValuePropName<T>(inputToObserve: InputPropertyName<T>): string {
+  return `_${inputToObserve.toString()}`
 }
 
-function intervalSubjectName(key: string|symbol|any): string {
-  return `_${key.toString()}Subject`
+function internalSubjectPropName<T>(inputToObserve: InputPropertyName<T>): string {
+  return `_${inputToObserve.toString()}Subject`
 }
 
-function setupIfNeeded<T>(componentInstance: any, key: string|symbol, inputToObserve: PossibleInputKeys<T>): void {
-  const subjectName = intervalSubjectName(inputToObserve.toString());
-  if (!componentInstance[ subjectName ]) {
+function setupIfNeeded<T>(componentInstance: any, observablePropName: string|symbol, inputToObserve: InputPropertyName<T>): void {
+  if (!componentInstance[ internalSubjectPropName(inputToObserve) ]) {
     const subject = new BehaviorSubject<any>(null);
-    componentInstance[ subjectName ] = subject;
-    componentInstance[ key ] = subject.asObservable();
+    componentInstance[ internalSubjectPropName(inputToObserve) ] = subject;
+    componentInstance[ observablePropName ] = subject.asObservable();
   }
 }
 
-export function ObserveInput<T = any>(inputToObserve: PossibleInputKeys<T> ) {
-  return function(target: Object, key: string | symbol) {
-    Object.defineProperty(target, inputToObserve as string, {
+export function ObserveInput<T = any>(inputPropName: InputPropertyName<T> ) {
+  return function(target: Object, observablePropName: string | symbol) {
+    Object.defineProperty(target, inputPropName as string, {
       get: function() {
-        setupIfNeeded(this, key, inputToObserve);
-        return this[ internalValueName(inputToObserve) ];
+        setupIfNeeded(this, observablePropName, inputPropName);
+        return this[ internalValuePropName(inputPropName) ];
       },
       set: function(newValue) {
-        setupIfNeeded(this, key, inputToObserve);
-        this[ internalValueName(inputToObserve) ] = newValue;
-        this[ intervalSubjectName(inputToObserve) ]?.next(newValue);
+        setupIfNeeded(this, observablePropName, inputPropName);
+        this[ internalValuePropName(inputPropName) ] = newValue;
+        this[ internalSubjectPropName(inputPropName) ]?.next(newValue);
       },
       enumerable: true,
       configurable: true,
