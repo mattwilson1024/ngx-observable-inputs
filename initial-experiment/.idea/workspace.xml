@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71348dc4-6d21-405b-9674-feb6f2bf693e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../second-experiment/src/app/album/album.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../second-experiment/src/app/album/album.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../second-experiment/src/app/album/album.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../second-experiment/src/app/album/album.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../second-experiment/src/app/photo/photo.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../second-experiment/src/app/photo/photo.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../second-experiment/src/app/photo/photo.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../second-experiment/src/app/photo/photo.component.ts" afterDir="false" />
-    </list>
+    <list default="true" id="71348dc4-6d21-405b-9674-feb6f2bf693e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +84,7 @@
       <workItem from="1601808980202" duration="732000" />
       <workItem from="1603146919209" duration="58000" />
       <workItem from="1626128663489" duration="2000" />
-      <workItem from="1626128680106" duration="1796000" />
+      <workItem from="1626128680106" duration="439000" />
     </task>
     <servers />
   </component>
