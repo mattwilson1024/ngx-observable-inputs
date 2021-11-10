@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { PhotoModule } from '../photo/photo.component';
 
 @Component({
@@ -11,6 +12,8 @@ export class AlbumComponent implements OnInit {
 
   public photo1Likes = 0;
   public photo2Likes = 0;
+
+  public photo1name = 'p1';
 
   constructor() { }
 
@@ -30,7 +33,8 @@ export class AlbumComponent implements OnInit {
   declarations: [AlbumComponent],
   imports: [
     CommonModule,
-    PhotoModule
+    PhotoModule,
+    FormsModule
   ],
   exports: [AlbumComponent],
 })

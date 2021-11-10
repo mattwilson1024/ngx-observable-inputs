@@ -10,11 +10,11 @@ import { ObserveInput } from '../library/observable-inputs';
 })
 export class PhotoComponent implements OnInit {
 
-  @Input() @ObserveInput<PhotoComponent>('caption$') caption: string;
-  @Input() @ObserveInput<PhotoComponent>('likes$') likes: number;
+  @Input() caption: string;
+  @Input() likes: number;
 
-  public caption$: Observable<string>;
-  public likes$: Observable<number>;
+  @ObserveInput<PhotoComponent>('caption') caption$: Observable<string>;
+  @ObserveInput<PhotoComponent>('likes') likes$: Observable<number>;
 
   constructor() { }
 

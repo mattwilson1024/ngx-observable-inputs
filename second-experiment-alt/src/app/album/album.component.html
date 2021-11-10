@@ -1,4 +1,4 @@
-<app-photo [caption]="'Photo 1'"
+<app-photo [caption]="photo1name"
            [likes]="photo1Likes">
 </app-photo>
 
@@ -8,3 +8,5 @@
 
 <button (click)="onLike1()">Like Photo 1</button>
 <button (click)="onLike2()">Like Photo 2</button>
+
+<input type="text" [(ngModel)]="photo1name" />
