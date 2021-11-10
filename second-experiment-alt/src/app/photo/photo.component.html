@@ -1,0 +1,8 @@
+<div class="photo-card">
+  <h2>{{ caption }}</h2>
+  <p>{{ likes }} likes</p>
+
+  <hr />
+  <p>title: {{ caption$ | async }}</p>
+  <p>likes: {{ likes$ | async }}</p>
+</div>
